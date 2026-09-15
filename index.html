@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>സഞ്ചയിക - ജി.എൽ.പി സ്കൂൾ മുണ്ടേക്കരാട്</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importing Anek Malayalam font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Anek Malayalam', sans-serif;
+            background: linear-gradient(135deg, #4a044e 0%, #701a75 50%, #86198f 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        /* Animated Golden Glowing Stroke Card for Admin Login */
+        @keyframes goldenGlow {
+            0% {
+                box-shadow: 0 0 15px rgba(234, 179, 8, 0.5), inset 0 0 10px rgba(234, 179, 8, 0.2);
+                border-color: rgba(234, 179, 8, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(250, 204, 21, 0.95), inset 0 0 20px rgba(250, 204, 21, 0.5);
+                border-color: rgba(250, 204, 21, 1);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(234, 179, 8, 0.5), inset 0 0 10px rgba(234, 179, 8, 0.2);
+                border-color: rgba(234, 179, 8, 0.7);
+            }
+        }
+        .golden-glow-card {
+            border: 3px solid #eab308;
+            animation: goldenGlow 3s infinite ease-in-out;
+        }
+
+        /* Premium Curved Rectangle Action Buttons with 3D Shadow and Dark Magenta theme */
+        .curved-action-btn {
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            transition: all 0.25s ease-in-out;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            width: 100%;
+        }
+        .curved-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+        .curved-action-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .glass-card {
+                background: white !important;
+                box-shadow: none !important;
+                border: none !important;
+            }
+            .print-block {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800">
+    <div id="app" class="max-w-4xl mx-auto px-4 py-6 min-h-screen flex flex-col justify-between">
+        
+        <!-- Header -->
+        <header class="text-center mb-8 bg-white/90 backdrop-md p-6 rounded-3xl shadow-xl border border-pink-200 no-print">
+            <div class="inline-block p-3.5 bg-fuchsia-100 text-fuchsia-800 rounded-full mb-3 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-fuchsia-900 tracking-tight">സഞ്ചയിക</h1>
+            <p class="text-fuchsia-700 font-bold text-sm md:text-base mt-1.5 uppercase tracking-wide">ജി.എൽ.പി സ്കൂൾ മുണ്ടേക്കരാട്</p>
+        </header>
+
+        <!-- Main Dynamic Content Area -->
+        <main id="main-content" class="flex-grow flex flex-col items-center justify-center">
+            <!-- Content will be dynamically rendered here -->
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-10 text-xs text-fuchsia-200 py-4 border-t border-fuchsia-800/60 font-medium no-print">
+            <p>© 2026 സഞ്ചയിക ആപ്പ് | ജി.എൽ.പി സ്കൂൾ മുണ്ടേക്കരാട്. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Custom Modal for Alerts/Messages -->
+    <div id="custom-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center transform transition-all scale-95 opacity-0 duration-300" id="modal-box">
+            <div id="modal-icon" class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"></div>
+            <h3 id="modal-title" class="text-lg font-bold text-slate-800 mb-2"></h3>
+            <p id="modal-message" class="text-slate-600 text-sm mb-6"></p>
+            <button onclick="closeModal()" class="w-full py-3 bg-fuchsia-700 hover:bg-fuchsia-800 text-white font-semibold rounded-xl shadow-md transition">ശരി (OK)</button>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY_STUDENTS = 'sanjayka_students_v32';
+        const STORAGE_KEY_COLLECTIONS = 'sanjayka_collections_v32';
+        const STORAGE_KEY_WITHDRAWALS = 'sanjayka_withdrawals_v32';
+
+        // Google Apps Script Web App URL for Google Sheets integration
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9Bt8j96DhY7vM4VsWqE6uSjMoQ-jdozJbgIYk7QnMyNFqt5e5J_avW8TMARvToULe/exec'; 
+
+        // Initial students dataset based on PDF acquittance roll with clean names (Boy/Girl 'B'/'G' tokens removed)
+        const initialStudents = [
+            // PRE-PRIMARY
+            { id: 'PP-355', name: 'MUHAMMED HAMDHAN K', classDiv: 'PRE-PRIMARY', parentCode: 'M1001' },
+            { id: 'PP-358', name: 'FATHIMA HENZA', classDiv: 'PRE-PRIMARY', parentCode: 'F1002' },
+            { id: 'PP-359', name: 'FATHIMA AMEENA V', classDiv: 'PRE-PRIMARY', parentCode: 'F1003' },
+            { id: 'PP-360', name: 'NAFIH V', classDiv: 'PRE-PRIMARY', parentCode: 'N1004' },
+            { id: 'PP-361', name: 'MUHAMMED HAYAN V', classDiv: 'PRE-PRIMARY', parentCode: 'M1005' },
+            { id: 'PP-362', name: 'MUHAMMED ZAYAN N', classDiv: 'PRE-PRIMARY', parentCode: 'M1006' },
+            { id: 'PP-363', name: 'FATHIMA LIYA V', classDiv: 'PRE-PRIMARY', parentCode: 'F1007' },
+            { id: 'PP-364', name: 'MUHAMMED RIHAN C', classDiv: 'PRE-PRIMARY', parentCode: 'M1008' },
+            { id: 'PP-365', name: 'MUHAMMED RAYAN V', classDiv: 'PRE-PRIMARY', parentCode: 'M1009' },
+            { id: 'PP-366', name: 'FATHIMATH JANNA', classDiv: 'PRE-PRIMARY', parentCode: 'F1010' },
+            { id: 'PP-367', name: 'IVAN ZAIN C', classDiv: 'PRE-PRIMARY', parentCode: 'I1011' },
+            { id: 'PP-368', name: 'AYISHA RAZANA K', classDiv: 'PRE-PRIMARY', parentCode: 'A1012' },
+            { id: 'PP-369', name: 'AYZAL ISHWA V', classDiv: 'PRE-PRIMARY', parentCode: 'A1013' },
+            { id: 'PP-370', name: 'MUHAMMED ZAYAN E K', classDiv: 'PRE-PRIMARY', parentCode: 'M1014' },
+            { id: 'PP-371', name: 'MIZNA FATHIMA', classDiv: 'PRE-PRIMARY', parentCode: 'M1015' },
+            { id: 'PP-372', name: 'MUHAMMED RAYHAN A', classDiv: 'PRE-PRIMARY', parentCode: 'M1016' },
+            { id: 'PP-373', name: 'MUHAMMED IZAN V', classDiv: 'PRE-PRIMARY', parentCode: 'M1017' },
+            { id: 'PP-374', name: 'ANHA ZEHRIN M K', classDiv: 'PRE-PRIMARY', parentCode: 'A1018' },
+            { id: 'PP-375', name: 'RITHUNANDA V', classDiv: 'PRE-PRIMARY', parentCode: 'R1019' },
+            { id: 'PP-376', name: 'MAHIBA P', classDiv: 'PRE-PRIMARY', parentCode: 'M1020' },
+            { id: 'PP-357', name: 'HENZA FATHIMA V', classDiv: 'PRE-PRIMARY', parentCode: 'H1021' },
+            { id: 'PP-356', name: 'SAINABA NUHA', classDiv: 'PRE-PRIMARY', parentCode: 'S1022' },
+            { id: 'PP-342', name: 'ADHIJITJ SM', classDiv: 'PRE-PRIMARY', parentCode: 'A1023' },
+            { id: 'PP-343', name: 'AYSHA NOURIN V', classDiv: 'PRE-PRIMARY', parentCode: 'A1024' },
+            { id: 'PP-344', name: 'FATHIMA RIFA P', classDiv: 'PRE-PRIMARY', parentCode: 'F1025' },
+            { id: 'PP-345', name: 'HAMBALA BATHOOL N', classDiv: 'PRE-PRIMARY', parentCode: 'H1026' },
+            { id: 'PP-346', name: 'MUHAMMED ESHAAN N', classDiv: 'PRE-PRIMARY', parentCode: 'M1027' },
+            { id: 'PP-347', name: 'MUHAMMED HAMDHAN KP', classDiv: 'PRE-PRIMARY', parentCode: 'M1028' },
+            { id: 'PP-348', name: 'MUHAMMED HASHIR CK', classDiv: 'PRE-PRIMARY', parentCode: 'M1029' },
+            { id: 'PP-349', name: 'MUHAMMED RAZAN C', classDiv: 'PRE-PRIMARY', parentCode: 'M1030' },
+            { id: 'PP-350', name: 'MUHAMMED RIZAN C', classDiv: 'PRE-PRIMARY', parentCode: 'M1031' },
+            { id: 'PP-351', name: 'RAJIHALI', classDiv: 'PRE-PRIMARY', parentCode: 'R1032' },
+            { id: 'PP-352', name: 'SIYA MEHREE K', classDiv: 'PRE-PRIMARY', parentCode: 'S1033' },
+            { id: 'PP-353', name: 'RUDRAV DK', classDiv: 'PRE-PRIMARY', parentCode: 'R1034' },
+            { id: 'PP-354', name: 'MUHAMMED HASHIR CM', classDiv: 'PRE-PRIMARY', parentCode: 'M1035' },
+
+            // CLASS 1
+            { id: 'C1-1', name: 'HISHAM P P', classDiv: 'CLASS 1', parentCode: 'H1036' },
+            { id: 'C1-2', name: 'RABEEUL RASHAAD K', classDiv: 'CLASS 1', parentCode: 'R1037' },
+            { id: 'C1-3', name: 'FIDHA FATHIMA C', classDiv: 'CLASS 1', parentCode: 'F1038' },
+            { id: 'C1-4', name: 'MARJAANAH K', classDiv: 'CLASS 1', parentCode: 'M1039' },
+            { id: 'C1-5', name: 'AL AMEEN PS', classDiv: 'CLASS 1', parentCode: 'A1040' },
+            { id: 'C1-6', name: 'FATHIMATH CM', classDiv: 'CLASS 1', parentCode: 'F1041' },
+            { id: 'C1-7', name: 'AYISHA RIYA C', classDiv: 'CLASS 1', parentCode: 'A1042' },
+            { id: 'C1-8', name: 'FATHIMA RAZANA', classDiv: 'CLASS 1', parentCode: 'F1043' },
+            { id: 'C1-9', name: 'FAIHA FATHIMA', classDiv: 'CLASS 1', parentCode: 'F1044' },
+            { id: 'C1-10', name: 'FATHIMA ISHA V', classDiv: 'CLASS 1', parentCode: 'F1045' },
+            { id: 'C1-11', name: 'FATHIMA NASHWA V', classDiv: 'CLASS 1', parentCode: 'F1046' },
+            { id: 'C1-12', name: 'AYISHA MEHRIN C', classDiv: 'CLASS 1', parentCode: 'A1047' },
+            { id: 'C1-13', name: 'MUHAMMED RISWAN P', classDiv: 'CLASS 1', parentCode: 'M1048' },
+            { id: 'C1-14', name: 'MUHAMMED RAZAN A R', classDiv: 'CLASS 1', parentCode: 'M1049' },
+            { id: 'C1-15', name: 'HIBA FATHIMA', classDiv: 'CLASS 1', parentCode: 'H1050' },
+
+            // CLASS 2
+            { id: 'C2-1', name: 'FATHIMA RAZANA P', classDiv: 'CLASS 2', parentCode: 'F1051' },
+            { id: 'C2-2', name: 'ALAYNA FATHIMA PJ', classDiv: 'CLASS 2', parentCode: 'A1052' },
+            { id: 'C2-3', name: 'MUHAMMED RISWAN P', classDiv: 'CLASS 2', parentCode: 'M1053' },
+            { id: 'C2-4', name: 'MUHAMMED ASLAM K', classDiv: 'CLASS 2', parentCode: 'M1054' },
+            { id: 'C2-5', name: 'NISHAN V', classDiv: 'CLASS 2', parentCode: 'N1055' },
+            { id: 'C2-6', name: 'FATHIMA MUFEEDA', classDiv: 'CLASS 2', parentCode: 'F1056' },
+            { id: 'C2-7', name: 'AYISHA HANA C M', classDiv: 'CLASS 2', parentCode: 'A1057' },
+            { id: 'C2-8', name: 'MUHAMMED TAMIM C', classDiv: 'CLASS 2', parentCode: 'M1058' },
+            { id: 'C2-9', name: 'FATHIMA MEHRIN K', classDiv: 'CLASS 2', parentCode: 'F1059' },
+            { id: 'C2-10', name: 'NISHBA FATHIMA C', classDiv: 'CLASS 2', parentCode: 'N1060' },
+            { id: 'C2-11', name: 'AIRA FATHIMA K', classDiv: 'CLASS 2', parentCode: 'A1061' },
+            { id: 'C2-12', name: 'MUHAMMED AFNAS K', classDiv: 'CLASS 2', parentCode: 'M1062' },
+            { id: 'C2-13', name: 'MUHAMMED SHAHABAS KP', classDiv: 'CLASS 2', parentCode: 'M1063' },
+            { id: 'C2-14', name: 'ARYANANDA B', classDiv: 'CLASS 2', parentCode: 'A1064' },
+            { id: 'C2-15', name: 'DHRUVA DK', classDiv: 'CLASS 2', parentCode: 'D1065' },
+
+            // CLASS 3
+            { id: 'C3-1', name: 'MIFTHAH K C', classDiv: 'CLASS 3', parentCode: 'M1066' },
+            { id: 'C3-2', name: 'MUHAMMED AMJAD P P', classDiv: 'CLASS 3', parentCode: 'M1067' },
+            { id: 'C3-3', name: 'SHIHA FATHIMA C T', classDiv: 'CLASS 3', parentCode: 'S1068' },
+            { id: 'C3-4', name: 'MUHAMMED RAZAN P P', classDiv: 'CLASS 3', parentCode: 'M1069' },
+            { id: 'C3-5', name: 'FATHIMA HAYA PP', classDiv: 'CLASS 3', parentCode: 'F1070' },
+            { id: 'C3-6', name: 'MUHAMMED MINHAJ NF', classDiv: 'CLASS 3', parentCode: 'M1071' },
+            { id: 'C3-7', name: 'MUHAMMED MINHAJ P', classDiv: 'CLASS 3', parentCode: 'M1072' },
+            { id: 'C3-8', name: 'MINHA FATHIMA P', classDiv: 'CLASS 3', parentCode: 'M1073' },
+            { id: 'C3-9', name: 'FATHIMA RIFA N', classDiv: 'CLASS 3', parentCode: 'F1074' },
+            { id: 'C3-10', name: 'RABEEH C', classDiv: 'CLASS 3', parentCode: 'R1075' },
+            { id: 'C3-11', name: 'ALEENA AP', classDiv: 'CLASS 3', parentCode: 'A1076' },
+            { id: 'C3-12', name: 'MUHAMMED HISHAM C', classDiv: 'CLASS 3', parentCode: 'M1077' },
+            { id: 'C3-13', name: 'MUHAMMED MUSTHAFA', classDiv: 'CLASS 3', parentCode: 'M1078' },
+            { id: 'C3-14', name: 'FATHIMA HAFILA V', classDiv: 'CLASS 3', parentCode: 'F1079' },
+            { id: 'C3-15', name: 'MUHAMMED SHAMMAS M C', classDiv: 'CLASS 3', parentCode: 'M1080' },
+            { id: 'C3-16', name: 'ANSAF M K', classDiv: 'CLASS 3', parentCode: 'A1081' },
+
+            // CLASS 4
+            { id: 'C4-1', name: 'MUHAMMED SHARIF MC', classDiv: 'CLASS 4', parentCode: 'M1082' },
+            { id: 'C4-2', name: 'AHMMED NAJIL V', classDiv: 'CLASS 4', parentCode: 'A1083' },
+            { id: 'C4-3', name: 'MUHAMMED RAIHAN N', classDiv: 'CLASS 4', parentCode: 'M1084' },
+            { id: 'C4-4', name: 'MINYA FATHIMA C K', classDiv: 'CLASS 4', parentCode: 'M1085' },
+            { id: 'C4-5', name: 'NIYA FATHIMA K P', classDiv: 'CLASS 4', parentCode: 'N1086' },
+            { id: 'C4-6', name: 'AJWA FATHIMA C', classDiv: 'CLASS 4', parentCode: 'A1087' },
+            { id: 'C4-7', name: 'FAHMA FATHIMA C', classDiv: 'CLASS 4', parentCode: 'F1088' },
+            { id: 'C4-8', name: 'SHAHMA PK', classDiv: 'CLASS 4', parentCode: 'S1089' },
+            { id: 'C4-9', name: 'FATHIMA MEHRIN C', classDiv: 'CLASS 4', parentCode: 'F1090' },
+            { id: 'C4-10', name: 'FATHIMA SWAFA', classDiv: 'CLASS 4', parentCode: 'F1091' },
+            { id: 'C4-11', name: 'FATHIMA VAFA', classDiv: 'CLASS 4', parentCode: 'F1092' },
+            { id: 'C4-12', name: 'MUHAMMED RIZAN C', classDiv: 'CLASS 4', parentCode: 'M1093' },
+            { id: 'C4-13', name: 'ABDULLA MINHAJ C T', classDiv: 'CLASS 4', parentCode: 'A1094' },
+            { id: 'C4-14', name: 'SILVA FATHIMA C', classDiv: 'CLASS 4', parentCode: 'S1095' },
+            { id: 'C4-15', name: 'HISANA FATHIMA C K', classDiv: 'CLASS 4', parentCode: 'H1096' },
+            { id: 'C4-16', name: 'JADUL HAQUE K', classDiv: 'CLASS 4', parentCode: 'J1097' },
+            { id: 'C4-17', name: 'MUHAMMED RAZAN P', classDiv: 'CLASS 4', parentCode: 'M1098' },
+            { id: 'C4-18', name: 'MUHAMMED HASHIM V', classDiv: 'CLASS 4', parentCode: 'M1099' }
+        ];
+
+        let students = JSON.parse(localStorage.getItem(STORAGE_KEY_STUDENTS)) || initialStudents;
+        let collections = JSON.parse(localStorage.getItem(STORAGE_KEY_COLLECTIONS)) || [];
+        let withdrawals = JSON.parse(localStorage.getItem(STORAGE_KEY_WITHDRAWALS)) || [];
+        let currentUser = null;
+
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY_STUDENTS, JSON.stringify(students));
+            localStorage.setItem(STORAGE_KEY_COLLECTIONS, JSON.stringify(collections));
+            localStorage.setItem(STORAGE_KEY_WITHDRAWALS, JSON.stringify(withdrawals));
+        }
+
+        async function syncToGoogleSheet(payload) {
+            if (!GOOGLE_SCRIPT_URL) return;
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.error("Google Sheet Sync Error:", err);
+            }
+        }
+
+        function showAlert(title, message, type = 'success') {
+            const modal = document.getElementById('custom-modal');
+            const box = document.getElementById('modal-box');
+            const iconDiv = document.getElementById('modal-icon');
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+
+            if (type === 'success') {
+                iconDiv.className = 'w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4';
+                iconDiv.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+            } else {
+                iconDiv.className = 'w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto mb-4';
+                iconDiv.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                box.classList.remove('scale-95', 'opacity-0');
+                box.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('custom-modal');
+            const box = document.getElementById('modal-box');
+            box.classList.remove('scale-100', 'opacity-100');
+            box.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function renderHome() {
+            const container = document.getElementById('main-content');
+            container.innerHTML = `
+                <div class="w-full max-w-md glass-card rounded-3xl p-8 shadow-2xl text-center animate-fade-in border border-fuchsia-200">
+                    <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2">ലോഗിൻ ചെയ്യുക</h2>
+                    <p class="text-slate-600 text-sm mb-8 font-medium">നിങ്ങളുടെ റോൾ തിരഞ്ഞെടുക്കുക</p>
+                    
+                    <div class="space-y-4">
+                        <button onclick="showAdminLogin()" class="w-full py-4 px-6 bg-gradient-to-r from-fuchsia-800 to-purple-800 hover:from-fuchsia-900 hover:to-purple-900 text-white font-bold rounded-2xl shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.654 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>അഡ്മിൻ ലോഗിൻ (Admin Login)</span>
+                        </button>
+                        
+                        <button onclick="showParentLogin()" class="w-full py-4 px-6 bg-gradient-to-r from-indigo-700 to-blue-700 hover:from-indigo-800 hover:to-blue-800 text-white font-bold rounded-2xl shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            <span>പാരന്റ് ലോഗിൻ (Parent Login)</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showAdminLogin() {
+            const container = document.getElementById('main-content');
+            container.innerHTML = `
+                <div class="w-full max-w-md glass-card rounded-3xl p-8 shadow-2xl golden-glow-card relative">
+                    <button onclick="renderHome()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm mb-4 flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <span>തിരികെ (Back)</span>
+                    </button>
+                    <div class="text-center mb-6">
+                        <div class="inline-block p-3 bg-amber-100 text-amber-700 rounded-full mb-2 shadow-inner">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h2 class="text-2xl font-extrabold text-fuchsia-900">അഡ്മിൻ ലോഗിൻ</h2>
+                        <p class="text-slate-600 text-xs mt-1 font-medium">Username: admin | Password: admin123</p>
+                    </div>
+                    
+                    <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">യൂസർനെയിം (Username)</label>
+                            <input type="text" id="admin-user" required placeholder="ഉദാ: admin" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white/90">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">പാസ്‌വേഡ് (Password)</label>
+                            <input type="password" id="admin-pass" required placeholder="ഉദാ: admin123" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none bg-white/90">
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-bold rounded-xl shadow-lg transition transform active:scale-95">ലോഗിൻ ചെയ്യുക</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('admin-user').value.trim();
+            const pass = document.getElementById('admin-pass').value.trim();
+            
+            if (user === 'admin' && (pass === 'admin123' || pass === 'admin')) {
+                currentUser = { role: 'admin' };
+                renderAdminDashboard();
+            } else {
+                showAlert('തെറ്റായ വിവരങ്ങൾ', 'ശരിയായ യൂസർനെയിമും (admin) പാസ്‌വേർഡും (admin123) നൽകുക.', 'error');
+            }
+        }
+
+        function showParentLogin() {
+            const container = document.getElementById('main-content');
+            container.innerHTML = `
+                <div class="w-full max-w-md glass-card rounded-3xl p-8 shadow-2xl border border-fuchsia-200 text-center">
+                    <div class="text-left mb-2">
+                        <button onclick="renderHome()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm mb-4 flex items-center space-x-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            <span>തിരികെ (Back)</span>
+                        </button>
+                    </div>
+                    <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2">പാരന്റ് ലോഗിൻ</h2>
+                    <p class="text-slate-600 text-sm mb-6 font-medium">പാരന്റ് ലോഗിൻ കോഡ് നൽകുക</p>
+                    
+                    <form onsubmit="handleParentLogin(event)" class="space-y-4">
+                        <div class="text-center">
+                            <label class="block text-sm font-bold text-slate-700 mb-2">പാരന്റ് ലോഗിൻ കോഡ്</label>
+                            <input type="text" id="parent-code-input" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white text-center text-xl tracking-widest font-bold uppercase">
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-indigo-700 hover:bg-indigo-800 text-white font-bold rounded-xl shadow-lg transition">വിവരങ്ങൾ കാണുക</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function handleParentLogin(e) {
+            e.preventDefault();
+            const code = document.getElementById('parent-code-input').value.trim().toUpperCase();
+            const student = students.find(s => s.parentCode.toUpperCase() === code);
+            
+            if (student) {
+                currentUser = { role: 'parent', studentId: student.id };
+                renderParentDashboard(student.id);
+            } else {
+                showAlert('തെറ്റായ കോഡ്', 'ശരിയായ പാരന്റ് ലോഗിൻ കോഡ് നൽകുക.', 'error');
+            }
+        }
+
+        function renderAdminDashboard() {
+            const container = document.getElementById('main-content');
+            container.innerHTML = `
+                <div class="w-full max-w-3xl glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
+                    <div class="flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
+                        <div>
+                            <h2 class="text-xl md:text-2xl font-extrabold text-fuchsia-900">അഡ്മിൻ മാനേജ്മെന്റ് ഡാഷ്‌ബോർഡ്</h2>
+                            <p class="text-slate-600 text-xs md:text-sm font-medium">സഞ്ചയിക കളക്ഷൻ & വിത്ഡ്രോവൽ കൺട്രോൾ</p>
+                        </div>
+                        <button onclick="logout()" class="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-sm rounded-xl transition flex items-center space-x-1 border border-rose-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                            <span>ലോഗ്ഔട്ട്</span>
+                        </button>
+                    </div>
+
+                    <!-- Curved Rectangle Action Buttons Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10 py-2">
+                        
+                        <!-- Sanjayka Management Button -->
+                        <div onclick="openSanjaykaManagement()" class="curved-action-btn bg-gradient-to-r from-fuchsia-800 to-purple-900 text-white">
+                            <div class="p-3 bg-white/15 rounded-xl mr-4 flex-shrink-0">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-sm md:text-base leading-snug">സഞ്ചയിക മാനേജ്മെന്റ്</h3>
+                                <p class="text-xs text-fuchsia-200 mt-0.5">കളക്ഷൻ & കോഡ് എൻട്രി</p>
+                            </div>
+                        </div>
+
+                        <!-- Sanjayka Reports Button -->
+                        <div onclick="openSanjaykaReports()" class="curved-action-btn bg-gradient-to-r from-indigo-800 to-blue-900 text-white">
+                            <div class="p-3 bg-white/15 rounded-xl mr-4 flex-shrink-0">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-sm md:text-base leading-snug">സഞ്ചയിക റിപ്പോർട്ട്സ്</h3>
+                                <p class="text-xs text-indigo-200 mt-0.5">വിശദമായ കണക്കുകൾ</p>
+                            </div>
+                        </div>
+
+                        <!-- Sanjayka Withdrawal Button -->
+                        <div onclick="openWithdrawalManagement()" class="curved-action-btn bg-gradient-to-r from-amber-700 to-orange-900 text-white">
+                            <div class="p-3 bg-white/15 rounded-xl mr-4 flex-shrink-0">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-extrabold text-sm md:text-base leading-snug">സഞ്ചയിക വിത്ഡ്രോവൽ</h3>
+                                <p class="text-xs text-amber-200 mt-0.5">തുക പിൻവലിക്കൽ</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Quick Summary Card -->
+                    <div class="bg-fuchsia-50/80 p-5 rounded-2xl border border-fuchsia-200 flex flex-col sm:flex-row justify-between items-center gap-4 shadow-sm">
+                        <div>
+                            <h4 class="font-extrabold text-fuchsia-900">ആകെ രജിസ്റ്റർ ചെയ്ത കുട്ടികൾ: <span class="text-fuchsia-700">${students.length}</span></h4>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">മുഴുവൻ ക്ലാസ്സുകളിലെയും കുട്ടികളുടെ വിവരങ്ങൾ ലഭ്യമാണ്.</p>
+                        </div>
+                        <button onclick="openAddStudentModal()" class="px-4 py-2.5 bg-fuchsia-800 hover:bg-fuchsia-900 text-white text-xs font-bold rounded-xl shadow transition flex items-center space-x-1.5 flex-shrink-0">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+                            <span>പുതിയ കുട്ടിയെ ചേർക്കുക</span>
+                        </button>
+                    </div>
+
+                </div>
+            `;
+        }
+
+        function openAddStudentModal() {
+            let nextNum = 1000 + students.length + 1;
+            const container = document.getElementById('main-content');
+            container.innerHTML = `
+                <div class="w-full max-w-lg glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
+                    <button onclick="renderAdminDashboard()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm mb-6 flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <span>ഡാഷ്‌ബോർഡിലേക്ക് തിരികെ</span>
+                    </button>
+                    
+                    <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2">പുതിയ കുട്ടിയെ ചേർക്കുക</h2>
+                    <p class="text-slate-600 text-sm mb-6 font-medium">ക്ലാസ്സും പേരും നൽകുക.</p>
+
+                    <form onsubmit="handleAddNewStudent(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">ക്ലാസ്സ് (Class)</label>
+                            <select id="new-stu-class" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                                <option value="PRE-PRIMARY">PRE-PRIMARY</option>
+                                <option value="CLASS 1">CLASS 1</option>
+                                <option value="CLASS 2">CLASS 2</option>
+                                <option value="CLASS 3">CLASS 3</option>
+                                <option value="CLASS 4">CLASS 4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">കുട്ടിയുടെ പേര് (ഇംഗ്ലീഷിൽ)</label>
+                            <input type="text" id="new-stu-name" oninput="previewGeneratedCode(this.value)" required placeholder="ഉദാ: ARJUN K" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none uppercase">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">പാരന്റ് ലോഗിൻ കോഡ് (Parent Code)</label>
+                            <input type="text" id="new-parent-code" value="A${nextNum}" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none font-bold text-lg tracking-wider uppercase">
+                            <p class="text-xs text-slate-500 mt-1">ആവശ്യമെങ്കിൽ ഈ കോഡ് മാറ്റിയെഴുതാവുന്നതാണ്.</p>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-bold rounded-xl shadow-lg transition">കുട്ടിയെ സേവ് ചെയ്യുക</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function previewGeneratedCode(nameVal) {
+            if (!nameVal.trim()) return;
+            let firstChar = nameVal.trim().charAt(0).toUpperCase();
+            let baseNum = 1000 + students.length + 1;
+            document.getElementById('new-parent-code').value = firstChar + baseNum;
+        }
+
+        function handleAddNewStudent(e) {
+            e.preventDefault();
+            const classDiv = document.getElementById('new-stu-class').value;
+            const name = document.getElementById('new-stu-name').value.trim().toUpperCase();
+            const parentCode = document.getElementById('new-parent-code').value.trim().toUpperCase();
+
+            if (students.some(s => s.parentCode.toUpperCase() === parentCode)) {
+                showAlert('കോഡ് നിലവിലുണ്ട്', 'ഈ പാരന്റ് കോഡ് മറ്റൊരു കുട്ടിക്ക് നൽകിയിട്ടുണ്ട്. വേറെയൊന്ന് നൽകുക.', 'error');
+                return;
+            }
+
+            const newId = 'STU_' + Date.now();
+            students.push({ id: newId, name, classDiv, parentCode });
+            saveData();
+            showAlert('വിജയകരമായി ചേർത്തു', `${name} (${classDiv}) എന്ന കുട്ടിയെ ലിസ്റ്റിലേക്ക് ചേർത്തിട്ടുണ്ട്.`);
+            renderAdminDashboard();
+        }
+
+        function openSanjaykaManagement() {
+            const container = document.getElementById('main-content');
+            let classOptions = ['PRE-PRIMARY', 'CLASS 1', 'CLASS 2', 'CLASS 3', 'CLASS 4']
+                .map(c => `<option value="${c}">${c}</option>`).join('');
+            let today = new Date().toISOString().split('T')[0];
+
+            container.innerHTML = `
+                <div class="w-full max-w-2xl glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
+                    <button onclick="renderAdminDashboard()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm mb-6 flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <span>ഡാഷ്‌ബോർഡിലേക്ക് തിരികെ</span>
+                    </button>
+                    
+                    <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2">സഞ്ചയിക കളക്ഷൻ എൻട്രി</h2>
+                    <p class="text-slate-600 text-sm mb-6 font-medium">ആദ്യം ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക. തുടർന്ന് വിദ്യാർത്ഥിയെ സെലക്ട് ചെയ്യുക.</p>
+
+                    <form onsubmit="handleCollectionSubmit(event)" class="space-y-5 bg-white/70 p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക (Select Class)</label>
+                            <select id="col-class" onchange="updateCollectionStudentDropdown()" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                                <option value="">-- ആദ്യം ക്ലാസ് തിരഞ്ഞെടുക്കുക --</option>
+                                ${classOptions}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">കുട്ടിയുടെ പേര് തിരഞ്ഞെടുക്കുക (Select Student)</label>
+                            <select id="col-student" onchange="displaySelectedStudentCode()" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                                <option value="">-- ആദ്യം ക്ലാസ് തിരഞ്ഞെടുക്കുക --</option>
+                            </select>
+                        </div>
+
+                        <div id="parent-code-display-box" class="hidden bg-fuchsia-50 p-3 rounded-xl border border-fuchsia-200 text-xs font-bold text-fuchsia-900 flex justify-between items-center">
+                            <span>പാരന്റ് ലോഗിൻ കോഡ്: <span id="displayed-pcode" class="text-base text-amber-700 tracking-widest"></span></span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">കളക്ഷൻ തുക (Amount in ₹)</label>
+                                <input type="number" id="col-amount" min="1" required placeholder="ഉദാ: 50" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">തീയതി (Date)</label>
+                                <input type="date" id="col-date" value="${today}" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-bold rounded-xl shadow-lg transition">കളക്ഷൻ സേവ് ചെയ്യുക</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function updateCollectionStudentDropdown() {
+            const cls = document.getElementById('col-class').value;
+            const stuSelect = document.getElementById('col-student');
+            const filtered = students.filter(s => s.classDiv === cls);
+
+            stuSelect.innerHTML = `<option value="">-- കുട്ടി തിരഞ്ഞെടുക്കുക --</option>` +
+                filtered.map(s => `<option value="${s.id}">${s.name} (കോഡ്: ${s.parentCode})</option>`).join('');
+            document.getElementById('parent-code-display-box').classList.add('hidden');
+        }
+
+        function displaySelectedStudentCode() {
+            const studentId = document.getElementById('col-student').value;
+            const box = document.getElementById('parent-code-display-box');
+            if (!studentId) {
+                box.classList.add('hidden');
+                return;
+            }
+            const student = students.find(s => s.id === studentId);
+            if (student) {
+                document.getElementById('displayed-pcode').innerText = student.parentCode;
+                box.classList.remove('hidden');
+            }
+        }
+
+        function handleCollectionSubmit(e) {
+            e.preventDefault();
+            const studentId = document.getElementById('col-student').value;
+            const amount = parseFloat(document.getElementById('col-amount').value);
+            const date = document.getElementById('col-date').value;
+            const student = students.find(s => s.id === studentId);
+
+            const newCol = {
+                id: 'COL' + Date.now(),
+                studentId,
+                amount,
+                date
+            };
+
+            collections.push(newCol);
+            saveData();
+
+            syncToGoogleSheet({
+                date: date,
+                studentName: student ? student.name : studentId,
+                amount: amount,
+                type: 'Collection'
+            });
+
+            showAlert('വിജയകരമായി സേവ് ചെയ്തു', 'സഞ്ചയിക കളക്ഷൻ തുക രേഖപ്പെടുത്തിയിട്ടുണ്ട്.');
+            openSanjaykaManagement();
+        }
+
+        function openWithdrawalManagement() {
+            const container = document.getElementById('main-content');
+            let classOptions = ['PRE-PRIMARY', 'CLASS 1', 'CLASS 2', 'CLASS 3', 'CLASS 4']
+                .map(c => `<option value="${c}">${c}</option>`).join('');
+            let today = new Date().toISOString().split('T')[0];
+
+            container.innerHTML = `
+                <div class="w-full max-w-2xl glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
+                    <button onclick="renderAdminDashboard()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm mb-6 flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <span>ഡാഷ്‌ബോർഡിലേക്ക് തിരികെ</span>
+                    </button>
+                    
+                    <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2">സഞ്ചയിക വിത്ഡ്രോവൽ മാനേജ്മെന്റ്</h2>
+                    <p class="text-slate-600 text-sm mb-6 font-medium">ക്ലാസ്സ് തിരഞ്ഞെടുത്ത് കുട്ടി പിൻവലിക്കുന്ന തുകയും കാരണവും രേഖപ്പെടുത്തുക.</p>
+
+                    <form onsubmit="handleWithdrawalSubmit(event)" class="space-y-5 bg-white/70 p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക (Select Class)</label>
+                            <select id="wit-class" onchange="updateWithdrawalStudentDropdown()" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                                <option value="">-- ആദ്യം ക്ലാസ് തിരഞ്ഞെടുക്കുക --</option>
+                                ${classOptions}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">കുട്ടിയെ തിരഞ്ഞെടുക്കുക (Select Student)</label>
+                            <select id="wit-student" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                                <option value="">-- ആദ്യം ക്ലാസ് തിരഞ്ഞെടുക്കുക --</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">പിൻവലിക്കുന്ന തുക (Amount in ₹)</label>
+                                <input type="number" id="wit-amount" min="1" required placeholder="ഉദാ: 100" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-1">തീയതി (Date)</label>
+                                <input type="date" id="wit-date" value="${today}" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">കാരണം (Reason / Purpose)</label>
+                            <input type="text" id="wit-reason" required placeholder="ഉദാ: നോട്ട്ബുക്ക് വാങ്ങാൻ" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-amber-700 hover:bg-amber-800 text-white font-bold rounded-xl shadow-lg transition">വിത്ഡ്രോവൽ സേവ് ചെയ്യുക</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function updateWithdrawalStudentDropdown() {
+            const cls = document.getElementById('wit-class').value;
+            const stuSelect = document.getElementById('wit-student');
+            const filtered = students.filter(s => s.classDiv === cls);
+
+            stuSelect.innerHTML = `<option value="">-- കുട്ടി തിരഞ്ഞെടുക്കുക --</option>` +
+                filtered.map(s => {
+                    let totalColl = collections.filter(c => c.studentId === s.id).reduce((acc, curr) => acc + curr.amount, 0);
+                    let totalWith = withdrawals.filter(w => w.studentId === s.id).reduce((acc, curr) => acc + curr.amount, 0);
+                    let balance = totalColl - totalWith;
+                    return `<option value="${s.id}">${s.name} (ബാക്കി: ₹${balance})</option>`;
+                }).join('');
+        }
+
+        function handleWithdrawalSubmit(e) {
+            e.preventDefault();
+            const studentId = document.getElementById('wit-student').value;
+            const amount = parseFloat(document.getElementById('wit-amount').value);
+            const date = document.getElementById('wit-date').value;
+            const reason = document.getElementById('wit-reason').value.trim();
+            const student = students.find(s => s.id === studentId);
+
+            let totalColl = collections.filter(c => c.studentId === studentId).reduce((acc, curr) => acc + curr.amount, 0);
+            let totalWith = withdrawals.filter(w => w.studentId === studentId).reduce((acc, curr) => acc + curr.amount, 0);
+            let balance = totalColl - totalWith;
+
+            if (amount > balance) {
+                showAlert('കൂടുതൽ തുക പിൻവലിക്കാൻ കഴിയില്ല', `ഈ കുട്ടിയുടെ അക്കൗണ്ടിൽ ആകെ ബാക്കി ₹${balance} മാത്രമേയുള്ളൂ.`, 'error');
+                return;
+            }
+
+            const newWit = {
+                id: 'WIT' + Date.now(),
+                studentId,
+                amount,
+                date,
+                reason
+            };
+
+            withdrawals.push(newWit);
+            saveData();
+
+            syncToGoogleSheet({
+                date: date,
+                studentName: student ? student.name : studentId,
+                amount: amount,
+                type: 'Withdrawal: ' + reason
+            });
+
+            showAlert('വിജയകരമായി രേഖപ്പെടുത്തി', 'സഞ്ചയിക പിൻവലിക്കൽ വിവരങ്ങൾ സേവ് ചെയ്തിട്ടുണ്ട്.');
+            openWithdrawalManagement();
+        }
+
+        function openSanjaykaReports() {
+            const container = document.getElementById('main-content');
+            
+            let studentRows = students.length > 0 ? students.map(s => {
+                let stuCollections = collections.filter(c => c.studentId === s.id);
+                let stuWithdrawals = withdrawals.filter(w => w.studentId === s.id);
+                let totalColl = stuCollections.reduce((acc, curr) => acc + curr.amount, 0);
+                let totalWith = stuWithdrawals.reduce((acc, curr) => acc + curr.amount, 0);
+                let balance = totalColl - totalWith;
+
+                return `
+                    <tr class="border-b hover:bg-fuchsia-50/50 transition">
+                        <td class="py-3 px-4 font-bold text-slate-800">${s.name}<br><span class="text-xs font-normal text-slate-500">${s.classDiv} | കോഡ്: ${s.parentCode}</span></td>
+                        <td class="py-3 px-4 font-semibold text-emerald-600">₹${totalColl}</td>
+                        <td class="py-3 px-4 font-semibold text-rose-600">₹${totalWith}</td>
+                        <td class="py-3 px-4 font-extrabold text-fuchsia-900">₹${balance}</td>
+                    </tr>
+                `;
+            }).join('') : `<tr><td colspan="4" class="text-center py-6 text-slate-500 text-sm">കുട്ടികളുടെ വിവരങ്ങൾ ഒന്നും ചേർത്തിട്ടില്ല.</td></tr>`;
+
+            container.innerHTML = `
+                <div class="w-full max-w-3xl glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
+                    <div class="flex justify-between items-center mb-6 no-print">
+                        <button onclick="renderAdminDashboard()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm flex items-center space-x-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            <span>ഡാഷ്‌ബോർഡിലേക്ക് തിരികെ</span>
+                        </button>
+                        <button onclick="window.print()" class="px-4 py-2 bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-bold text-xs rounded-xl shadow transition flex items-center space-x-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                            <span>A4 PDF / പ്രിന്റ് ചെയ്യുക</span>
+                        </button>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-extrabold text-fuchsia-900">സഞ്ചയിക വിശദമായ റിപ്പോർട്ട്</h2>
+                        <p class="text-slate-600 text-xs font-bold uppercase">ജി.എൽ.പി സ്കൂൾ മുണ്ടേക്കരാട്</p>
+                    </div>
+
+                    <!-- Summary Table -->
+                    <div class="overflow-x-auto mb-8 bg-white/80 rounded-2xl border border-slate-200 shadow-sm">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-fuchsia-100 text-fuchsia-900 border-b border-fuchsia-200 text-xs uppercase font-extrabold">
+                                    <th class="py-3 px-4">കുട്ടിയുടെ പേര് & ക്ലാസ്സ്</th>
+                                    <th class="py-3 px-4">ആകെ അടച്ചത്</th>
+                                    <th class="py-3 px-4">പിൻവലിച്ചത്</th>
+                                    <th class="py-3 px-4">ബാക്കി തുക</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${studentRows}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderParentDashboard(studentId) {
+            const container = document.getElementById('main-content');
+            const student = students.find(s => s.id === studentId);
+            const stuCollections = collections.filter(c => c.studentId === studentId);
+            const stuWithdrawals = withdrawals.filter(w => w.studentId === studentId);
+
+            const totalColl = stuCollections.reduce((acc, curr) => acc + curr.amount, 0);
+            const totalWith = stuWithdrawals.reduce((acc, curr) => acc + curr.amount, 0);
+            const balance = totalColl - totalWith;
+
+            let colList = stuCollections.map(c => `<li class="flex justify-between text-xs py-1.5 border-b"><span class="text-slate-600">${c.date}</span><span class="font-bold text-emerald-600">+₹${c.amount}</span></li>`).join('') || '<p class="text-xs text-slate-500">കളക്ഷൻ വിവരങ്ങൾ ലഭ്യമല്ല</p>';
+
+            let witList = stuWithdrawals.map(w => `<li class="flex justify-between text-xs py-1.5 border-b"><span class="text-slate-600">${w.date} (${w.reason})</span><span class="font-bold text-rose-600">-₹${w.amount}</span></li>`).join('') || '<p class="text-xs text-slate-500">പിൻവലിക്കലുകൾ ഒന്നും നടന്നിട്ടില്ല</p>';
+
+            container.innerHTML = `
+                <div class="w-full max-w-xl glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
+                    <div class="flex justify-between items-center mb-6 no-print">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-fuchsia-900">${student.name}</h2>
+                            <p class="text-slate-600 text-xs font-medium">${student.classDiv} | കോഡ്: ${student.parentCode}</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="window.print()" class="px-3 py-1.5 bg-fuchsia-800 text-white font-bold text-xs rounded-xl shadow transition">A4 PDF / പ്രിന്റ്</button>
+                            <button onclick="logout()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl transition border border-rose-200">ലോഗ്ഔട്ട്</button>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-4 hidden print-block">
+                        <h2 class="text-xl font-extrabold text-fuchsia-900">സഞ്ചയിക സ്റ്റേറ്റ്മെന്റ് - ${student.name}</h2>
+                        <p class="text-xs text-slate-600">ക്ലാസ്സ്: ${student.classDiv} | പാരന്റ് കോഡ്: ${student.parentCode} | ജി.എൽ.പി സ്കൂൾ മുണ്ടേക്കരാട്</p>
+                    </div>
+
+                    <!-- Balance Highlight Card -->
+                    <div class="bg-gradient-to-r from-fuchsia-800 to-purple-800 text-white p-6 rounded-2xl shadow-lg mb-6 text-center">
+                        <p class="text-xs uppercase tracking-wider text-fuchsia-200 font-bold">അക്കൗണ്ടിലെ ആകെ ബാക്കി തുക</p>
+                        <h3 class="text-4xl font-extrabold mt-1">₹${balance}</h3>
+                        <div class="flex justify-center space-x-6 mt-4 text-xs font-semibold pt-3 border-t border-fuchsia-700/60">
+                            <span>ആകെ അടച്ചത്: ₹${totalColl}</span>
+                            <span>ആകെ എടുത്തത്: ₹${totalWith}</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
+                            <h4 class="font-bold text-xs uppercase text-slate-700 mb-2">കളക്ഷൻ ഹിസ്റ്ററി</h4>
+                            <ul class="max-h-40 overflow-y-auto pr-1">
+                                ${colList}
+                            </ul>
+                        </div>
+                        <div class="bg-white/70 p-4 rounded-2xl border border-slate-200">
+                            <h4 class="font-bold text-xs uppercase text-slate-700 mb-2">വിത്ഡ്രോവൽ ഹിസ്റ്ററി</h4>
+                            <ul class="max-h-40 overflow-y-auto pr-1">
+                                ${witList}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function logout() {
+            currentUser = null;
+            renderHome();
+        }
+
+        window.onload = function() {
+            renderHome();
+        };
+    </script>
+</body>
+</html>
