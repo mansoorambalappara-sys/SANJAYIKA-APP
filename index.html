@@ -104,17 +104,14 @@
         
         <!-- Header -->
         <header class="text-center mb-8 bg-white/90 backdrop-md p-6 rounded-3xl shadow-xl border border-pink-200 no-print">
-            <!-- Custom Logo inside a distinct blue circular container with border -->
+            <!-- Custom Circular Blue Logo with Piggy Bank SVG -->
             <div class="inline-flex items-center justify-center p-3.5 bg-blue-50 text-blue-600 rounded-full mb-3 shadow-md border-2 border-blue-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- Piggy Bank Body -->
                     <path d="M19 5c-1.5 0-3 .5-4 2-1.5-1-3.5-1-5 0-1-1.5-2.5-2-4-2C3 5 2 7 2 9c0 3 2 5 4 6v3h2v-2h8v2h2v-3c2-1 4-3 4-6 0-2-1-4-3-4z"></path>
                     <path d="M10 9v2"></path>
                     <circle cx="7" cy="10" r="1"></circle>
-                    <!-- Coin dropping in -->
                     <circle cx="12" cy="2" r="1.5" fill="currentColor"></circle>
                     <path d="M12 3.5v3"></path>
-                    <!-- Child hand / arm gesture -->
                     <path d="M15 14c1.5 1 3 2 4 4"></path>
                 </svg>
             </div>
@@ -143,15 +140,24 @@
         </div>
     </div>
 
+    <!-- Student Detail Modal -->
+    <div id="student-detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl transform transition-all scale-95 opacity-0 duration-300 max-h-[90vh] overflow-y-auto" id="student-detail-box">
+            <div id="student-modal-content"></div>
+            <div class="mt-6">
+                <button onclick="closeStudentModal()" class="w-full py-3 bg-fuchsia-700 hover:bg-fuchsia-800 text-white font-bold rounded-xl shadow-md transition">മടങ്ങിപ്പോവുക (Close)</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const STORAGE_KEY_STUDENTS = 'sanjayka_students_v36';
-        const STORAGE_KEY_COLLECTIONS = 'sanjayka_collections_v36';
-        const STORAGE_KEY_WITHDRAWALS = 'sanjayka_withdrawals_v36';
+        const STORAGE_KEY_STUDENTS = 'sanjayka_students_v42';
+        const STORAGE_KEY_COLLECTIONS = 'sanjayka_collections_v42';
+        const STORAGE_KEY_WITHDRAWALS = 'sanjayka_withdrawals_v42';
 
         // Google Apps Script Web App URL for Google Sheets integration
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9Bt8j96DhY7vM4VsWqE6uSjMoQ-jdozJbgIYk7QnMyNFqt5e5J_avW8TMARvToULe/exec'; 
 
-        // Initial students dataset based on PDF acquittance roll with clean names
         const initialStudents = [
             // PRE-PRIMARY
             { id: 'PP-355', name: 'MUHAMMED HAMDHAN K', classDiv: 'PRE-PRIMARY', parentCode: 'M1001' },
@@ -322,6 +328,17 @@
             }, 300);
         }
 
+        function closeStudentModal() {
+            const modal = document.getElementById('student-detail-modal');
+            const box = document.getElementById('student-detail-box');
+            box.classList.remove('scale-100', 'opacity-100');
+            box.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
         function renderHome() {
             const container = document.getElementById('main-content');
             container.innerHTML = `
@@ -391,15 +408,15 @@
         function showParentLogin() {
             const container = document.getElementById('main-content');
             container.innerHTML = `
-                <div class="w-full max-w-md glass-card rounded-3xl p-8 shadow-2xl border border-fuchsia-200">
+                <div class="w-full max-w-md glass-card rounded-3xl p-8 shadow-2xl border border-fuchsia-200 text-center">
                     <div class="text-left mb-2">
                         <button onclick="renderHome()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm mb-4 flex items-center space-x-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                             <span>തിരികെ (Back)</span>
                         </button>
                     </div>
-                    <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2 text-center">പാരന്റ് ലോഗിൻ</h2>
-                    <p class="text-slate-600 text-sm mb-6 font-medium text-center">പാരന്റ് ലോഗിൻ കോഡ്</p>
+                    <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2">പാരന്റ് ലോഗിൻ</h2>
+                    <p class="text-slate-600 text-sm mb-6 font-medium">പാരന്റ് ലോഗിൻ കോഡ്</p>
                     
                     <form onsubmit="handleParentLogin(event)" class="space-y-4">
                         <div class="text-center">
@@ -461,7 +478,7 @@
                             </div>
                             <div>
                                 <h3 class="font-extrabold text-sm md:text-base leading-snug">സഞ്ചയിക റിപ്പോർട്ട്സ്</h3>
-                                <p class="text-xs text-indigo-200 mt-0.5">വിശദമായ കണക്കുകൾ</p>
+                                <p class="text-xs text-indigo-200 mt-0.5">ക്ലാസ്സ് തിരിച്ചുള്ള കണക്കുകൾ</p>
                             </div>
                         </div>
 
@@ -505,7 +522,7 @@
                     </button>
                     
                     <h2 class="text-2xl font-extrabold text-fuchsia-900 mb-2">പുതിയ കുട്ടിയെ ചേർക്കുക</h2>
-                    <p class="text-slate-600 text-sm mb-6 font-medium">ക്ലാസ്സും പേരും നൽകുക.</p>
+                    <p class="text-slate-600 text-sm mb-6 font-medium">ക്ലാസ്സും പേരും പാരന്റ് കോഡും നൽകുക.</p>
 
                     <form onsubmit="handleAddNewStudent(event)" class="space-y-4">
                         <div>
@@ -523,7 +540,7 @@
                             <input type="text" id="new-stu-name" oninput="previewGeneratedCode(this.value)" required placeholder="ഉദാ: ARJUN K" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none uppercase">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-1">പാരന്റ് ലോഗിൻ കോഡ് (Parent Code)</label>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">പാരന്റ് ലോഗിൻ കോഡ്</label>
                             <input type="text" id="new-parent-code" value="A${nextNum}" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none font-bold text-lg tracking-wider uppercase">
                         </div>
                         <button type="submit" class="w-full py-3.5 bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-bold rounded-xl shadow-lg transition">കുട്ടിയെ സേവ് ചെയ്യുക</button>
@@ -771,26 +788,11 @@
 
         function openSanjaykaReports() {
             const container = document.getElementById('main-content');
-            
-            let studentRows = students.length > 0 ? students.map(s => {
-                let stuCollections = collections.filter(c => c.studentId === s.id);
-                let stuWithdrawals = withdrawals.filter(w => w.studentId === s.id);
-                let totalColl = stuCollections.reduce((acc, curr) => acc + curr.amount, 0);
-                let totalWith = stuWithdrawals.reduce((acc, curr) => acc + curr.amount, 0);
-                let balance = totalColl - totalWith;
-
-                return `
-                    <tr class="border-b hover:bg-fuchsia-50/50 transition">
-                        <td class="py-3 px-4 font-bold text-slate-800">${s.name}<br><span class="text-xs font-normal text-slate-500">${s.classDiv} | കോഡ്: ${s.parentCode}</span></td>
-                        <td class="py-3 px-4 font-semibold text-emerald-600">₹${totalColl}</td>
-                        <td class="py-3 px-4 font-semibold text-rose-600">₹${totalWith}</td>
-                        <td class="py-3 px-4 font-extrabold text-fuchsia-900">₹${balance}</td>
-                    </tr>
-                `;
-            }).join('') : `<tr><td colspan="4" class="text-center py-6 text-slate-500 text-sm">കുട്ടികളുടെ വിവരങ്ങൾ ഒന്നും ചേർത്തിട്ടില്ല.</td></tr>`;
+            let classOptions = ['PRE-PRIMARY', 'CLASS 1', 'CLASS 2', 'CLASS 3', 'CLASS 4']
+                .map(c => `<option value="${c}">${c}</option>`).join('');
 
             container.innerHTML = `
-                <div class="w-full max-w-3xl glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
+                <div class="w-full max-w-4xl glass-card rounded-3xl p-6 md:p-8 shadow-2xl border border-fuchsia-200">
                     <div class="flex justify-between items-center mb-6 no-print">
                         <button onclick="renderAdminDashboard()" class="text-fuchsia-800 hover:text-fuchsia-950 font-bold text-sm flex items-center space-x-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -804,27 +806,204 @@
                     
                     <div class="text-center mb-6">
                         <h2 class="text-2xl font-extrabold text-fuchsia-900">സഞ്ചയിക വിശദമായ റിപ്പോർട്ട്</h2>
-                        <p class="text-slate-600 text-xs font-bold uppercase">Run by: GLP School Mundekkarad</p>
+                        <p class="text-slate-600 text-xs font-bold uppercase mt-1">Run by: GLP School Mundekkarad</p>
                     </div>
 
-                    <!-- Summary Table -->
-                    <div class="overflow-x-auto mb-8 bg-white/80 rounded-2xl border border-slate-200 shadow-sm">
-                        <table class="w-full text-left border-collapse text-sm">
-                            <thead>
-                                <tr class="bg-fuchsia-100 text-fuchsia-900 border-b border-fuchsia-200 text-xs uppercase font-extrabold">
-                                    <th class="py-3 px-4">കുട്ടിയുടെ പേര് & ക്ലാസ്സ്</th>
-                                    <th class="py-3 px-4">ആകെ അടച്ചത്</th>
-                                    <th class="py-3 px-4">പിൻവലിച്ചത്</th>
-                                    <th class="py-3 px-4">ബാക്കി തുക</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${studentRows}
-                            </tbody>
-                        </table>
+                    <div class="mb-6 no-print">
+                        <label class="block text-sm font-bold text-slate-700 mb-1">ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക (Select Class)</label>
+                        <select id="report-class-select" onchange="renderReportStudentList()" class="w-full max-w-md px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-fuchsia-600 focus:outline-none bg-white">
+                            <option value="">-- ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക --</option>
+                            ${classOptions}
+                        </select>
+                    </div>
+
+                    <div id="report-student-container">
+                        <p class="text-center text-slate-500 py-6 text-sm">ദയവായി മുകളിൽ നിന്ന് ഒരു ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക.</p>
                     </div>
                 </div>
             `;
+        }
+
+        function renderReportStudentList() {
+            const cls = document.getElementById('report-class-select').value;
+            const container = document.getElementById('report-student-container');
+            if (!cls) {
+                container.innerHTML = `<p class="text-center text-slate-500 py-6 text-sm">ദയവായി മുകളിൽ നിന്ന് ഒരു ക്ലാസ്സ് തിരഞ്ഞെടുക്കുക.</p>`;
+                return;
+            }
+
+            const filteredStudents = students.filter(s => s.classDiv === cls);
+            if (filteredStudents.length === 0) {
+                container.innerHTML = `<p class="text-center text-slate-500 py-6 text-sm">ഈ ക്ലാസ്സിൽ കുട്ടികൾ ആരും ഇല്ല.</p>`;
+                return;
+            }
+
+            let rows = filteredStudents.map(s => {
+                let stuCollections = collections.filter(c => c.studentId === s.id);
+                let stuWithdrawals = withdrawals.filter(w => w.studentId === s.id);
+                let totalColl = stuCollections.reduce((acc, curr) => acc + curr.amount, 0);
+                let totalWith = stuWithdrawals.reduce((acc, curr) => acc + curr.amount, 0);
+                let balance = totalColl - totalWith;
+
+                return `
+                    <tr class="border-b hover:bg-fuchsia-50/70 transition cursor-pointer" onclick="openStudentDetailWindow('${s.id}')">
+                        <td class="py-3.5 px-4 font-bold text-slate-800">${s.name}<br><span class="text-xs font-normal text-slate-500">കോഡ്: ${s.parentCode}</span></td>
+                        <td class="py-3.5 px-4 font-bold text-emerald-800">₹${totalColl}</td>
+                        <td class="py-3.5 px-4 font-bold text-rose-800">₹${totalWith}</td>
+                        <td class="py-3.5 px-4 font-extrabold text-fuchsia-900 text-base">₹${balance}</td>
+                        <td class="py-3.5 px-4 text-right no-print">
+                            <button class="px-3 py-1.5 bg-fuchsia-100 hover:bg-fuchsia-200 text-fuchsia-800 font-bold text-xs rounded-lg transition">ഡീറ്റെയിൽസ് കാണുക</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <div class="overflow-x-auto bg-white/90 rounded-2xl border border-slate-200 shadow-sm">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-fuchsia-100 text-fuchsia-900 border-b border-fuchsia-200 text-xs uppercase font-extrabold">
+                                <th class="py-3 px-4">കുട്ടിയുടെ പേര്</th>
+                                <th class="py-3 px-4">ആകെ അടച്ചത്</th>
+                                <th class="py-3 px-4">ആകെ എടുത്തത്</th>
+                                <th class="py-3 px-4">ബാക്കി തുക</th>
+                                <th class="py-3 px-4 text-right no-print">നടപടി</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function openStudentDetailWindow(studentId) {
+            const student = students.find(s => s.id === studentId);
+            if (!student) return;
+
+            const stuCollections = collections.filter(c => c.studentId === studentId);
+            const stuWithdrawals = withdrawals.filter(w => w.studentId === studentId);
+            const totalColl = stuCollections.reduce((acc, curr) => acc + curr.amount, 0);
+            const totalWith = stuWithdrawals.reduce((acc, curr) => acc + curr.amount, 0);
+            const balance = totalColl - totalWith;
+
+            let colDetails = stuCollections.map(c => `
+                <div class="flex justify-between items-center text-xs bg-emerald-50 px-3 py-2 rounded-xl my-1.5 border border-emerald-200">
+                    <span>തീയതി: <b>${c.date}</b> | തുക: <b class="text-emerald-700">₹${c.amount}</b></span>
+                    <div class="space-x-2">
+                        <button onclick="editCollection('${c.id}', '${studentId}')" class="text-blue-700 hover:bg-blue-100 px-2 py-1 rounded font-bold">എഡിറ്റ്</button>
+                        <button onclick="deleteCollection('${c.id}', '${studentId}')" class="text-rose-700 hover:bg-rose-100 px-2 py-1 rounded font-bold">ഡിലീറ്റ്</button>
+                    </div>
+                </div>
+            `).join('') || '<p class="text-xs text-slate-400">കളക്ഷൻ വിവരങ്ങൾ ഇല്ല</p>';
+
+            let witDetails = stuWithdrawals.map(w => `
+                <div class="flex justify-between items-center text-xs bg-rose-50 px-3 py-2 rounded-xl my-1.5 border border-rose-200">
+                    <span>തീയതി: <b>${w.date}</b> | തുക: <b class="text-rose-700">₹${w.amount}</b> (${w.reason})</span>
+                    <div class="space-x-2">
+                        <button onclick="editWithdrawal('${w.id}', '${studentId}')" class="text-blue-700 hover:bg-blue-100 px-2 py-1 rounded font-bold">എഡിറ്റ്</button>
+                        <button onclick="deleteWithdrawal('${w.id}', '${studentId}')" class="text-rose-700 hover:bg-rose-100 px-2 py-1 rounded font-bold">ഡിലീറ്റ്</button>
+                    </div>
+                </div>
+            `).join('') || '<p class="text-xs text-slate-400">പിൻവലിക്കലുകൾ ഇല്ല</p>';
+
+            const contentHtml = `
+                <div class="text-center mb-6 border-b pb-4">
+                    <h3 class="text-xl font-extrabold text-fuchsia-900">${student.name}</h3>
+                    <p class="text-xs text-slate-600 mt-0.5">${student.classDiv} | പാരന്റ് കോഡ്: ${student.parentCode}</p>
+                    <div class="mt-3 inline-block bg-fuchsia-100 text-fuchsia-900 px-4 py-1.5 rounded-full font-extrabold text-sm">
+                        ബാക്കി തുക: ₹${balance}
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-bold text-xs uppercase text-slate-700 mb-2">കളക്ഷൻ ഹിസ്റ്ററി (എഡിറ്റ്/ഡിലീറ്റ്)</h4>
+                        <div class="max-h-40 overflow-y-auto pr-1">${colDetails}</div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs uppercase text-slate-700 mb-2">വിത്ഡ്രോവൽ ഹിസ്റ്ററി (എഡിറ്റ്/ഡിലീറ്റ്)</h4>
+                        <div class="max-h-40 overflow-y-auto pr-1">${witDetails}</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('student-modal-content').innerHTML = contentHtml;
+            const modal = document.getElementById('student-detail-modal');
+            const box = document.getElementById('student-detail-box');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                box.classList.remove('scale-95', 'opacity-0');
+                box.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function editCollection(colId, studentId) {
+            const col = collections.find(c => c.id === colId);
+            if (!col) return;
+            const newAmountStr = prompt("പുതിയ തുക നൽകുക (Amount in ₹):", col.amount);
+            if (newAmountStr === null) return;
+            const newAmount = parseFloat(newAmountStr);
+            if (isNaN(newAmount) || newAmount <= 0) {
+                showAlert('തെറ്റായ തുക', 'ശരിയായ സംഖ്യ നൽകുക.', 'error');
+                return;
+            }
+
+            const newDate = prompt("പുതിയ തീയതി നൽകുക (YYYY-MM-DD):", col.date);
+            if (newDate === null) return;
+
+            col.amount = newAmount;
+            if (newDate.trim()) col.date = newDate.trim();
+            saveData();
+            showAlert('വിജയകരമായി മാറ്റി', 'കളക്ഷൻ വിവരങ്ങൾ അപ്ഡേറ്റ് ചെയ്തിട്ടുണ്ട്.');
+            openStudentDetailWindow(studentId);
+            renderReportStudentList();
+        }
+
+        function deleteCollection(colId, studentId) {
+            if (!confirm("ഈ കളക്ഷൻ എൻട്രി ഡിലീറ്റ് ചെയ്യണമെന്ന് ഉറപ്പാണോ?")) return;
+            collections = collections.filter(c => c.id !== colId);
+            saveData();
+            showAlert('വിജയകരമായി ഡിലീറ്റ് ചെയ്തു', 'കളക്ഷൻ എൻട്രി നീക്കം ചെയ്തിരിക്കുന്നു.');
+            openStudentDetailWindow(studentId);
+            renderReportStudentList();
+        }
+
+        function editWithdrawal(witId, studentId) {
+            const wit = withdrawals.find(w => w.id === witId);
+            if (!wit) return;
+            const newAmountStr = prompt("പുതിയ തുക നൽകുക (Amount in ₹):", wit.amount);
+            if (newAmountStr === null) return;
+            const newAmount = parseFloat(newAmountStr);
+            if (isNaN(newAmount) || newAmount <= 0) {
+                showAlert('തെറ്റായ തുക', 'ശരിയായ സംഖ്യ നൽകുക.', 'error');
+                return;
+            }
+
+            const newDate = prompt("പുതിയ തീയതി നൽകുക (YYYY-MM-DD):", wit.date);
+            if (newDate === null) return;
+
+            const newReason = prompt("പുതിയ കാരണം നൽകുക:", wit.reason);
+            if (newReason === null) return;
+
+            wit.amount = newAmount;
+            if (newDate.trim()) wit.date = newDate.trim();
+            if (newReason.trim()) wit.reason = newReason.trim();
+            saveData();
+            showAlert('വിജയകരമായി മാറ്റി', 'വിത്ഡ്രോവൽ വിവരങ്ങൾ അപ്ഡേറ്റ് ചെയ്തിട്ടുണ്ട്.');
+            openStudentDetailWindow(studentId);
+            renderReportStudentList();
+        }
+
+        function deleteWithdrawal(witId, studentId) {
+            if (!confirm("ഈ വിത്ഡ്രോവൽ എൻട്രി ഡിലീറ്റ് ചെയ്യണമെന്ന് ഉറപ്പാണോ?")) return;
+            withdrawals = withdrawals.filter(w => w.id !== witId);
+            saveData();
+            showAlert('വിജയകരമായി ഡിലീറ്റ് ചെയ്തു', 'വിത്ഡ്രോവൽ എൻട്രി നീക്കം ചെയ്തിരിക്കുന്നു.');
+            openStudentDetailWindow(studentId);
+            renderReportStudentList();
         }
 
         function renderParentDashboard(studentId) {
@@ -846,7 +1025,7 @@
                     <div class="flex justify-between items-center mb-6 no-print">
                         <div>
                             <h2 class="text-xl font-extrabold text-fuchsia-900">${student.name}</h2>
-                            <p class="text-slate-600 text-xs font-medium">${student.classDiv} | കോഡ്: ${student.parentCode}</p>
+                            <p class="text-slate-600 text-xs font-medium">${student.classDiv} | പാരന്റ് കോഡ്: ${student.parentCode}</p>
                         </div>
                         <div class="flex space-x-2">
                             <button onclick="window.print()" class="px-3 py-1.5 bg-fuchsia-800 text-white font-bold text-xs rounded-xl shadow transition">A4 PDF / പ്രിന്റ്</button>
